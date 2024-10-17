@@ -1,0 +1,29 @@
+name: CI/CD Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest steps:
+      - name: Checkout code uses: actions/checkout@v2 - name: Cache Node.js modules uses: actions/cache@v2
+        with:
+          path: ~/.npm key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install - name: Run tests
+        run: npm test continue-on-error: false
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy run: npm run deploy
+
+      - name: Notify success
+        if: success()
+        run: echo "Deployment successful!" # Здесь можно добавить уведомления через Slack или другие сервисы
+
+      - name: Notify failure
+        if: failure()
+        run: echo "Deployment failed!" # Здесь можно добавить уведомления через Slack или другие сервисы
