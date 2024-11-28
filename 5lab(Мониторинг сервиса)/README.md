@@ -13,7 +13,7 @@
     minikube start
 ```
 
-![alt text](/img/Desktop_241128_0259.jpg)
+![Мое изображение](img/Desktop_241128_0259.jpg)
 
 Мы будем использовать Helm для установки Prometheus и Grafana.
 
@@ -25,7 +25,7 @@
 	curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
-![alt text](/img/Desktop_241128_0301.jpg)
+![Мое изображение](img/img/Desktop_241128_0301.jpg)
 
 Чтобы проверить, установлен ли Helm на вашем компьютере, вы можете выполнить следующую команду в терминале или командной строке:
 
@@ -53,7 +53,7 @@
 	'helm' is not recognized as an internal or external command, operable program or batch file.
 ```
 
-![alt text](/img/image.png)
+![Мое изображение](img/image.png)
 Шаг 3: **Установка Prometheus и Grafana**
 
 Добавьте репозиторий с графиками для Prometheus и Grafana:
@@ -64,7 +64,7 @@
     helm repo update
 ```
 
-![alt text](/img/image-1.png)
+![Мое изображение](img/image-1.png)
 
 Установите Prometheus:
 
@@ -72,14 +72,14 @@
     helm install prometheus prometheus-community/prometheus
 ```
 
-![alt text](/img/image-2.png)
+![Мое изображение](img/image-2.png)
 Установите Grafana:
 
 ```
     helm install grafana grafana/grafana
 ```
 
-![alt text](/img/image-3.png)
+![Мое изображение](img/image-3.png)
 
 Шаг 4: **Проверка установки**
 
@@ -89,7 +89,7 @@
 kubectl get pods
 ```
 
-![alt text](/img/image-4.png)
+![Мое изображение](img/image-4.png)
 
 Шаг 5: **Настройка доступа к Grafana и к Prometheus**
 
@@ -99,7 +99,7 @@ kubectl get pods
     kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
 
-![alt text](/img/image-5.png)
+![Мое изображение](img/image-5.png)
 
 Настройте порт-форвардинг для доступа к Grafana и к Prometheus:
 
@@ -107,11 +107,11 @@ kubectl get pods
     kubectl port-forward svc/grafana 3002:80 & kubectl port-forward svc/prometheus-server 9092:80 &
 ```
 
-![alt text](/img/image-6.png)
+![Мое изображение](img/image-6.png)
 
 Теперь вы можете открыть Grafana в браузере по адресу http://localhost:3002. Войдите, используя логин admin и полученный пароль.
 
-![alt text](/img/image-7.png)
+![Мое изображение](img/image-7.png)
 
 Шаг 6: **Настройка источника данных в Grafana**
 
@@ -127,22 +127,22 @@ kubectl get pods
 
 - Нажмите "Save & Test".
 
-![alt text](/img/image-8.png)
+![Мое изображение](img/image-8.png)
 
-![alt text](/img/image-9.png)
+![Мое изображение](img/image-9.png)
 
 Шаг 6: **Добавление дашборда**
 
 В меню выбираем Dashboards и кликаем по Import. Используем уже готовый дашборд с номерами 8171 и 15759. Больше готовых дашбордов можно взять на сайте графаны.
 
-![alt text](/img/image-10.png)
+![Мое изображение](img/image-10.png)
 
 Установим prometheus в качестве источника данных для дашборда и нажмём Import.
-![alt text](/img/image-11.png)
+![Мое изображение](img/image-11.png)
 
-![alt text](/img/image-13.png)
+![Мое изображение](img/image-13.png)
 
-![alt text](/img/image-12.png)
+![Мое изображение](img/image-12.png)
 
 ### Заключение
 
