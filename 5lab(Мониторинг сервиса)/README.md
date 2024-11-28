@@ -25,7 +25,7 @@
 	curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
-![Мое изображение](img/img/Desktop_241128_0301.jpg)
+![Мое изображение](img/Desktop_241128_0301.jpg)
 
 Чтобы проверить, установлен ли Helm на вашем компьютере, вы можете выполнить следующую команду в терминале или командной строке:
 
